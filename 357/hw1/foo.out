@@ -1,0 +1,8 @@
+tr '\nbc' def
+
+input:
+abc def
+ghi jkl
+
+output:
+aef defdghi jkld
