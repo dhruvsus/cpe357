@@ -1,8 +1,9 @@
 #ifndef MYTR_H
 #define MYTR_H
-int checkarguments(int num_arguments, char* argument_array[]);
-void delete_tr(char* argv[]);
-void replace_tr(char* argv[]);
+int check_arguments(int num_arguments, char* argument_array[]);
 int arr[256];
-void init_array(int* arr);
+void init_array();
+void del_build_arr(char* del_set);
+void rep_build_arr();
+char identify_escaped_character(char ch);
 #endif
