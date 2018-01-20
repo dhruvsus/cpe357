@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include"mytr.h"
-#include<ctype.h>
 #include<string.h>
 
 int main(int argc, char* argv[]){
@@ -17,6 +16,7 @@ int main(int argc, char* argv[]){
         else{
             rep_build_arr();
         }
+        translate();
     }
     return 0;
 }
@@ -47,14 +47,17 @@ void del_build_arr(char* del_set){
     while(*del_set){
         if(*del_set == '\\' && *(del_set + 1)){
             del_set++;
-            *del_set = find_escape_characters(*del_set);
+            *del_set = identify_escaped_character(*del_set);
         }
 
-        arr[(int) *del_set] = '\0';
+        arr[(int)*del_set] = 0;
         del_set++;
     }
 }
-char find_escape_characters(char c){
+void rep_build_arr(){
+    printf("hello");
+}
+char identify_escaped_character(char c){
 
     switch (c)
     {
@@ -66,5 +69,17 @@ char find_escape_characters(char c){
             return '\\';
         default:
             return c;
+    }
+}
+void translate(){
+    char c;
+    c=getchar();
+    while(c!=EOF){
+        if((char)arr[(int)c]!=0){
+            continue;
+        }
+        else{
+            putchar((char)arr[(int)c]);
+        }
     }
 }

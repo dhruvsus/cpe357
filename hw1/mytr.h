@@ -6,4 +6,5 @@ void init_array();
 void del_build_arr(char* del_set);
 void rep_build_arr();
 char identify_escaped_character(char ch);
+void translate();
 #endif
