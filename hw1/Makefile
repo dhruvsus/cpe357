@@ -1,13 +1,13 @@
-CC = gcc
-CFLAGS = -Wall -ansi -pedantic
-MAIN = mytr
-OBJS = mytr.o
-all : $(MAIN)
+cc= gcc
+Cflags= -Wall -ansi -pedantic
+LD=
+LFlags=
 
-$(MAIN) : $(OBJS) mytr.h
-	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
-mytr.o : mytr.c mytr.h
-	$(CC) $(CFLAGS) -c mytr.c
+all : mytr clean
+
+mytr : mytr.o
+
+mytr.o : mytr.c
 
 clean :
-	rm *.o $(MAIN) core
+	-rm *.o
