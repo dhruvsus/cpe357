@@ -6,7 +6,7 @@ int main(int argc, char* argv[]){
     int result;
     result=check_arguments(argc,argv);
     if(result==1){
-        return result;
+        return 1;
     }
     else{
         init_array();
@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
             del_build_arr(argv[2]);
         }
         else{
-            rep_build_arr();
+            rep_build_arr(argv[1],argv[2]);
         }
         translate();
     }
@@ -29,13 +29,11 @@ int check_arguments(int num_arguments, char* argument_array[]){
         printf("tr: extra operand '%s'\nOnly one string may be given when deleting without squeezing repeats.\nTry 'tr --help' for more information.\n", argument_array[3]);
         return 1;
     }
-    else if(num_arguments>3){
+    else if(num_arguments>3) {
         printf("tr: extra operand ‘%s’\nTry 'tr --help' for more information.\n", argument_array[3]);
         return 1;
     }
-    else{
-        return 0;
-    }
+    return 0;
 }
 void init_array(){
     int iter;
@@ -50,12 +48,34 @@ void del_build_arr(char* del_set){
             *del_set = identify_escaped_character(*del_set);
         }
 
-        arr[(int)*del_set] = 0;
+        arr[(int)*del_set] = -1;
         del_set++;
     }
 }
-void rep_build_arr(){
-    printf("hello");
+void rep_build_arr(char* set1, char* set2){
+    while(*set1){
+        if(*set1 == '\\' && *(set1 + 1) && (*(set1+1)=='t'||*(set1+1)=='n'||*(set1+1)=='\\')){
+            set1++;
+            arr[(int) *set1] = *set1;
+            set1++;
+        }else{
+            if(*set2 == '\\' && *(set2 + 1) && (*(set2+1)=='t'||*(set2+1)=='n'||*(set2+1)=='\\') ){
+                set2++;
+                *set2 = identify_escaped_character(*set2);
+            }
+
+            if(*set1 == '\\' && *(set1 + 1) && (*(set1+1)=='t'||*(set1+1)=='n'||*(set1+1)=='\\') ){
+                set1++;
+                *set1 = identify_escaped_character(*set1);
+            }
+            arr[(int) *set1] = *set2;
+            set1++;
+        }
+
+        if(*(set2 + 1)){
+            set2++;
+        }
+    }
 }
 char identify_escaped_character(char c){
 
@@ -73,12 +93,8 @@ char identify_escaped_character(char c){
 }
 void translate(){
     char c;
-    c=getchar();
-    while(c!=EOF){
-        if((char)arr[(int)c]!=0){
-            continue;
-        }
-        else{
+    while((c=getchar())!= EOF){
+        if((char)arr[(int)c]!=-1){
             putchar((char)arr[(int)c]);
         }
     }
