@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -ansi -pedantic
+CFLAGS = -Wall -ansi -pedantic -g
 MAIN = example
 OBJS = example.o fact.o
 all : $(MAIN)
@@ -14,4 +14,4 @@ fact.o : fact.c fact.h
 	$(CC) $(CFLAGS) -c fact.c
 
 clean :
-	rm *.o $(MAIN) core
+	rm *.o $(MAIN)
