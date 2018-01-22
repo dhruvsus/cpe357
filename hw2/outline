@@ -1,0 +1,26 @@
+Outline: 
+1. Parse command line arguments:
+    a)Store the -n argument in an integer with the default value of n.
+    b)Check how the program is being used, files, or standard input.(based on number of parameters)
+    c)System test by printing out value of n, and the detected mode(std input, or files)
+2. Check command line arguments:
+    a)Check validity of -n. If not an integer, print usage error.
+    b)System tests to check errors.
+3. Open all the files, printing errors for those that can't be opened.
+    a)Test using unit tests for certain files.
+4. Initialize data structures
+    a)Array of linked lists(hash table with seperate chaining) X to store words based on their calculated hash(sum of ascii value.)
+    b)Linked list Y to store -n, or 10 most frequent words.
+    c)Test using safe_alloc, and printing errors. Not much to test really.
+5. Parse files/stdinput.
+    a)Parse file, stdinput using fscanf(), and isalpha().
+    b)Hash the word, and look up it's occurrence.
+6. Add the word to the structures.
+    a)If the X has collision, store in new node in corresponding linked list.
+    b)If Y is full, add word based on occurrence, or not.
+7. Sort the linked-lists
+    a)Sort the linked lists in the Array
+    b)Sort the linked list X.
+8. Output:
+    a)Look up the hash of each word in X.
+    b)According to the hash, find the word in the linked list, and print out it and it's occurrence out.
