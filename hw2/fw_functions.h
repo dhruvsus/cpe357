@@ -7,10 +7,8 @@ struct node
     int count;
     struct node *next;
 };
-
 typedef struct node *node;
-
-void initht();
+void init_hashtable();
 unsigned long hash(char *);
 void put(char *);
 node get(char *);

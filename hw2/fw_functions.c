@@ -10,7 +10,7 @@ struct node *hashtable[TABLE_SIZE];
 int entries = 0;
 
 /* Initializes hashtable array to NULLs */
-void initht()
+void init_hashtable()
 {
     int i;
     for (i = 0; i < TABLE_SIZE; i++)
@@ -114,7 +114,7 @@ static int compare(const void *p1, const void *p2)
 }
 
 /* Print n most frequent words in hash table */
-void printreport(int n)
+void print_report(int n)
 {
     int i;
     struct node **arr;

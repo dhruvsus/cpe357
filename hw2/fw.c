@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     /* Loop once per file, or once for stdin */   
     size = (argc - optind) ? (argc - optind) : 1;
 
-    initht(); /* Initialize the hash table */
+    init_hashtable(); /* Initialize the hash table */
 
     for (i = 0; i < size; i++)
     {
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
             perror(argv[optind + i]);
     }
    
-    printreport(n); /* Print n most common words (out of k) */
+    print_report(n); /* Print n most common words (out of k) */
     
     return EXIT_SUCCESS;
 }
@@ -56,7 +56,7 @@ int usage()
 }
 
 /* Read an arbitrarily long word into memory */
-char *getword(FILE *file)
+char* getword(FILE *file)
 {
     int size = 0;
     char *word = NULL;
