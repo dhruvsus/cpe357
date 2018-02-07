@@ -4,5 +4,6 @@
 
 #ifndef HW3_HENCODE_H
 #define HW3_HENCODE_H
-char* usage();
+void usage();
+void build_array(char* filename);
 #endif //HW3_HENCODE_H
