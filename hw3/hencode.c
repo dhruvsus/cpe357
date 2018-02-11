@@ -30,13 +30,21 @@ void usage(){
 }
 void build_array(char* filename){
     int* chartable;
-    int fd_read;
-    chartable=(int*)calloc(ASCII,sizeof(int));
+    char c;
+    int fd_read,i;
+    int characterread;
+    chartable=(int*) calloc(ASCII,sizeof(int));
     fd_read=open(filename,O_RDONLY);
     if(fd_read==-1){
         printf("%s\n",strerror(errno));
     }
     else{
-
+        while(characterread=read(fd_read,&c,1)>0){
+            *(chartable+c)=*(chartable+c)+1;
+        }
+        for(i=0;i<ASCII;i++){
+            putchar(i);
+            printf(": %d\n",*(chartable+i));
+        }
     }
 }
