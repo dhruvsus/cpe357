@@ -69,8 +69,7 @@ int main(int argc, char *argv[]) {
 	  perror("output_file_error");
 	  exit(EXIT_FAILURE);
    }
-    while((numBytes = read(fdIn, buffer, BUFFSIZE)) > 0) {
-        printf("hello\n");
+    while((numBytes = read(fdIn, buffer, BUFFSIZE)) > 4) {
         firstRead = 0;
 	  if(headerFlag) {
 		 headerFlag = 0;
