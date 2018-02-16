@@ -69,9 +69,9 @@ int main(int argc, char *argv[]) {
 	  perror("output_file_error");
 	  exit(EXIT_FAILURE);
    }
-    printf("hello\n");
     while((numBytes = read(fdIn, buffer, BUFFSIZE)) > 0) {
-	   firstRead = 0;
+        printf("hello\n");
+        firstRead = 0;
 	  if(headerFlag) {
 		 headerFlag = 0;
 		 buffIndex = read_header(&numChars, counts, &sumCounts,
