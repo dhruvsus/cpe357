@@ -6,7 +6,7 @@ LDFLAGS =
 mytar: mytar.o safe.o
 	$(LD) $(LDFLAGS) mytar.o safe.o -o mytar
 
-mytar.o: mytar.c mytar.h
+mytar.o: mytar.c mytar.h apue.h
 	$(CC) $(CFLAGS) -c  mytar.c
 
 safe.o: safe.c safe.h
