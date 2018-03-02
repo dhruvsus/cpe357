@@ -5,7 +5,7 @@
 #define FWID_PERMS   10
 #define FWID_MTIME   16
 #define TM_FIRSTYEAR 1900
-#define BLK_SIZE     4096
+#define BLK_SIZE     512
 #define UID_MAX      07777777
 #define MODE_CREATE  1
 #define MODE_EXTRACT 2
