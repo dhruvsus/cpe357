@@ -3,18 +3,40 @@
 #include<string.h>
 #include<sys/time.h>
 #include"timer.h"
+#include<limits.h>
+#include<signal.h>
+#include<errno.h>
 int main(int argc, char* argv[]){
-    int len,i;
-    if(argc>1 || argc ==0){
+    long int time;
+    if(argc!=2){
         usage();
+        return 1;
     }
-    else if(argc==1){
-        if(atoi(argv[1])==0){
-          usage();
-        }
+    time=stringToNumber(argv[1]);
+    if(time<0){
+        return 1;
+    }
+    else{
+        startTimer(time);
+        printf("Time’s up!\n");
     }
 }
 void usage(){
-  perror(" ");
-  exit(1);
+    fprintf(stderr,"usage: timeit <seconds>\n");
+}
+long int stringToNumber(const char* toNumber){
+    long int time;
+    char* endptr;
+    errno=0;
+    time=strtol(toNumber,&endptr,0);
+    if(errno==ERANGE || *endptr!='\0' || endptr==toNumber){
+        fprintf(stderr,"%s: malformed time.\n",toNumber);
+        usage();
+        return LONG_MIN;
+    }
+    return time;
+}
+void startTimer(long int time){
+    errno=0;
+    struct itimerval 
 }
