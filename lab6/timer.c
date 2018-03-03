@@ -6,15 +6,15 @@
 int main(int argc, char* argv[]){
     int len,i;
     if(argc>1 || argc ==0){
-        timeerrusage();
+        usage();
     }
     else if(argc==1){
         if(atoi(argv[1])==0){
-          timeerrusage();
+          usage();
         }
     }
 }
-void timeerrusage(){
+void usage(){
   perror(" ");
   exit(1);
 }
