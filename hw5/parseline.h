@@ -11,8 +11,8 @@
 #define cmdbadoutputerror "bad output redirection\n"
 #define cmdambinputerror "ambiguous input\n"
 #define cmdamboutputerror "ambiguous output\n"
-#define pipein "pipe from command\n"
-#define pipeout "pipe to command\n"
+#define pipein "pipe from stage\n"
+#define pipeout "pipe to stage\n"
 typedef struct command{
     char line[MAX_COMMAND_LINE_LENGTH];
     char input[50];
