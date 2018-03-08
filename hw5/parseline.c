@@ -80,10 +80,10 @@ command* makeCommands(command *head, char *line){
       if(*tok == '>') {
           if(to) {
               if(last) {
-                  fprintf(stdout,"%s: ambiguous input\n",trav->argv[0]);
+                  fprintf(stderr,"%s: ambiguous input\n",trav->argv[0]);
                   exit(1);
               }
-              fprintf(stdout,"%s: bad input redirection\n", trav->argv[0]);
+              fprintf(stderr,"%s: bad input redirection\n", trav->argv[0]);
               exit(1);
           }
           tok = strsep(buf, " ");
@@ -92,10 +92,10 @@ command* makeCommands(command *head, char *line){
       } else if(*tok == '<') {
           if(from) {
               if(last) {
-                  fprintf(stdout,"%s: ambiguous input\n",trav->argv[0]);
+                  fprintf(stderr,"%s: ambiguous input\n",trav->argv[0]);
                   exit(1);
               }
-              fprintf(stdout,"%s: bad input redirection\n", trav->argv[0]);
+              fprintf(stderr,"%s: bad input redirection\n", trav->argv[0]);
               exit(1);
           }
           tok = strsep(buf, " ");
@@ -106,7 +106,7 @@ command* makeCommands(command *head, char *line){
       }
   }
   if(!trav->argv[0]) {
-       fprintf(stdout,"invalid null command\n");
+       fprintf(stderr,"invalid null command\n");
        exit(1);
   }
   trav->numcommand = current++;
