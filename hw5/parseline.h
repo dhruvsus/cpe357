@@ -5,12 +5,12 @@
 #define MAX_ARGUMENTS_TO_COMMAND 10
 #define cmdlenerror "command too long\n"
 #define pplengtherror "pipeline too deep\n"
-#define cmdargnoerror "cmd: too many arguments\n"
+#define cmdargnoerror "too many arguments\n"
 #define ppemptyerror "invalid null commandn\n"
-#define cmdbadinputerror "cmd: bad input redirection\n"
-#define cmdbadoutputerror "cmd: bad output redirection\n"
-#define cmdambinputerror "cmd: ambiguous input\n"
-#define cmdamboutputerror "cmd: ambiguous output\n"
+#define cmdbadinputerror "bad input redirection\n"
+#define cmdbadoutputerror "bad output redirection\n"
+#define cmdambinputerror "ambiguous input\n"
+#define cmdamboutputerror "ambiguous output\n"
 #define pipein "pipe from command\n"
 #define pipeout "pipe to command\n"
 typedef struct command{
