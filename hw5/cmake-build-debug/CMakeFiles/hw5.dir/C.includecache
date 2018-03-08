@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/dhruv/Winter357/hw5/parseline.c
+stdio.h
+-
+string.h
+-
+ctype.h
+-
+parseline.h
+/home/dhruv/Winter357/hw5/parseline.h
+
+/home/dhruv/Winter357/hw5/parseline.h
+

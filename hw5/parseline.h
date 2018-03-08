@@ -3,15 +3,26 @@
 #define MAX_COMMAND_LINE_LENGTH 512
 #define MAX_COMMANDS_TO_PIPELINE 10
 #define MAX_ARGUMENTS_TO_COMMAND 10
-#define cmdlenerror "command too long"
-#define pplengtherror "pipeline too deep"
-#define cmdargnoerror "cmd: too many arguments"
-#define ppemptyerror "invalid null command"
-#define cmdbadinputerror "cmd: bad input redirection"
-#define cmdbadoutputerror "cmd: bad output redirection"
-#define cmdambinputerror "cmd: ambiguous input"
-#define cmdamboutputerror "cmd: ambiguous output"
-#define pipein "pipe from stage"
-#define pipeout "pipe to stage"
-int handleInput();
+#define cmdlenerror "command too long\n"
+#define pplengtherror "pipeline too deep\n"
+#define cmdargnoerror "cmd: too many arguments\n"
+#define ppemptyerror "invalid null commandn\n"
+#define cmdbadinputerror "cmd: bad input redirection\n"
+#define cmdbadoutputerror "cmd: bad output redirection\n"
+#define cmdambinputerror "cmd: ambiguous input\n"
+#define cmdamboutputerror "cmd: ambiguous output\n"
+#define pipein "pipe from command\n"
+#define pipeout "pipe to command\n"
+typedef struct command{
+    char line[MAX_COMMAND_LINE_LENGTH];
+    char input[50];
+    char output[50];
+    int argc;
+    char * argv[MAX_ARGUMENTS_TO_COMMAND];
+    int numcommand;
+    struct command * next;
+} command;
+command * parse(command * head);
+void printCommands(command * head);
+command * makeCommands(command * head, char * line);
 #endif
