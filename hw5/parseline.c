@@ -38,7 +38,7 @@ command* makeCommands(command *head, char *line){
   if(head == NULL) {
       head = safe_malloc(sizeof(*head));
       last = NULL;
-      trav = h  ead;
+      trav = head;
   } else {
       trav = head;
       while(trav->next){
