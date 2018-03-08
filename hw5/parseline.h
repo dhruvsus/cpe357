@@ -13,4 +13,5 @@
 #define cmdamboutputerror "cmd: ambiguous output"
 #define pipein "pipe from stage"
 #define pipeout "pipe to stage"
+int handleInput();
 #endif

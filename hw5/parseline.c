@@ -7,7 +7,7 @@ int main(){
   return 0;
 }
 int handleInput(){
-  char stringInput[MAX_COMMAND_LINE_LENGTH];
-  scanf("%s",stringInput);
-  printf("%s",stringInput);
+  char stringInput[MAX_COMMAND_LINE_LENGTH+1];
+  fgets(stringInput,MAX_COMMAND_LINE_LENGTH,stdin);
+  fputs(stringInput,stdout);
 }
