@@ -15,12 +15,13 @@ int main (int argc, char * argv[]) {
 command* parse(command* head){
     char *line, *token;
     char **buf;
-    int temp;
+    int c;
     line=(char*) safe_malloc(sizeof(char)*MAX_COMMAND_LINE_LENGTH);
     fgets(line,MAX_COMMAND_LINE_LENGTH,stdin);
-    if(getc(stdin)!=EOF){
+    while ((c = fgetc(stdin)) != EOF && c != '\n'){
         fprintf(stderr,"command too long\n");
-    }
+        exit(1);
+    };
     buf=&line;
     token=line;
     while(token=strsep(buf,"|")){
@@ -77,11 +78,11 @@ command* makeCommands(command *head, char *line){
         }
         if(*tok == '>') {
             if(to) {
-                if(last) {
-                    fprintf(stderr,"%s: ambiguous input\n",trav->argv[0]);
+                if(!last) {
+                    fprintf(stderr,"%s: ambiguous output\n",trav->argv[0]);
                     exit(1);
                 }
-                fprintf(stderr,"%s: bad input redirection\n", trav->argv[0]);
+                fprintf(stderr,"%s: bad input output\n", trav->argv[0]);
                 exit(1);
             }
             tok = strsep(buf, " ");
@@ -89,7 +90,7 @@ command* makeCommands(command *head, char *line){
             to = 1;
         } else if(*tok == '<') {
             if(from) {
-                if(last) {
+                if( last) {
                     fprintf(stderr,"%s: ambiguous input\n",trav->argv[0]);
                     exit(1);
                 }
