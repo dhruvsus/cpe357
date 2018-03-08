@@ -6,14 +6,12 @@
 #include"safe.h"
 int main (int argc, char * argv[]) {
   command * head;
-
   head = NULL;
   fprintf(stdout,"line: ");
   head = parse(head);
   printCommands(head);
   return 0;
 }
-
 command* parse(command* head){
   char *line, *token;
   char **buf;
@@ -48,12 +46,9 @@ command* makeCommands(command *head, char *line){
       trav = trav->next;
       trav = safe_malloc(sizeof(*trav));
   }
-
-
   if(line[strlen(line)-1] == '\n') {
       line[strlen(line)-1] = '\0';
   }
-
   if(!last) {
       strcpy(trav->input, in);
   } else {
@@ -65,7 +60,6 @@ command* makeCommands(command *head, char *line){
           sprintf(temp, "%d", current);
           strcat(last->output, temp);
       }
-
       last->next = trav;
   }
   strcpy(trav->output, out);
@@ -114,9 +108,6 @@ command* makeCommands(command *head, char *line){
   trav->next = NULL;
   return head;
 }
-
-
-
 void printCommands(command * head) {
   int x;
   command *trav = head;
@@ -136,5 +127,4 @@ void printCommands(command * head) {
       printf("\n");
   }
   printf("\n");
-
 }
