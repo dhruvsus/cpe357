@@ -38,7 +38,7 @@ command* makeCommands(command *head, char *line){
   if(head == NULL) {
       head = safe_malloc(sizeof(*head));
       last = NULL;
-      trav = head;
+      trav = h  ead;
   } else {
       trav = head;
       while(trav->next){
@@ -80,10 +80,10 @@ command* makeCommands(command *head, char *line){
       if(*tok == '>') {
           if(to) {
               if(last) {
-                  fprintf(stderr,"%s: ambiguous input\n",trav->argv[0]);
+                  fprintf(stdout,"%s: ambiguous input\n",trav->argv[0]);
                   exit(1);
               }
-              fprintf(stderr,"%s: bad input redirection\n", trav->argv[0]);
+              fprintf(stdout,"%s: bad input redirection\n", trav->argv[0]);
               exit(1);
           }
           tok = strsep(buf, " ");
@@ -92,10 +92,10 @@ command* makeCommands(command *head, char *line){
       } else if(*tok == '<') {
           if(from) {
               if(last) {
-                  fprintf(stderr,"%s: ambiguous input\n",trav->argv[0]);
+                  fprintf(stdout,"%s: ambiguous input\n",trav->argv[0]);
                   exit(1);
               }
-              fprintf(stderr,"%s: bad input redirection\n", trav->argv[0]);
+              fprintf(stdout,"%s: bad input redirection\n", trav->argv[0]);
               exit(1);
           }
           tok = strsep(buf, " ");
@@ -106,13 +106,12 @@ command* makeCommands(command *head, char *line){
       }
   }
   if(!trav->argv[0]) {
-       fprintf(stderr,"invalid null command\n");
+       fprintf(stdout,"invalid null command\n");
        exit(1);
   }
   trav->numcommand = current++;
   trav->argc = x;
   trav->next = NULL;
-
   return head;
 }
 
