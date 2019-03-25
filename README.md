@@ -1,2 +1,2 @@
 # Winter357
-This repo contains the code from CPE 357: System Programming from Winter 2017 under Professor Gregory Taylor
+Labs and code from System Programming taught by Professor Gregory Taylor Winter 2017
